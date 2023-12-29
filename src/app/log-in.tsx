@@ -9,7 +9,9 @@ export default function LogIn() {
 
   const dispatch = useDispatch<AppDispatch>();
 
-  const onClickLogIn = () => {};
+  const onClickLogIn = () => {
+    dispatch(logIn(username));
+  };
 
   const onClickToggle = () => {};
 
@@ -19,7 +21,7 @@ export default function LogIn() {
     <div>
       <input type="text" onChange={(e) => setUsername(e.target.value)} />
       <br />
-      <button>Log In</button>
+      <button onClick={onClickLogIn}>Log In</button>
       <br />
       <button>Log Out</button>
       <br />
