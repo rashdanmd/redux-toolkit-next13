@@ -15,7 +15,9 @@ export default function LogIn() {
 
   const onClickToggle = () => {};
 
-  const onClickLogout = () => {};
+  const onClickLogout = () => {
+    dispatch(logOut());
+  };
 
   return (
     <div>
@@ -23,7 +25,7 @@ export default function LogIn() {
       <br />
       <button onClick={onClickLogIn}>Log In</button>
       <br />
-      <button>Log Out</button>
+      <button onClick={onClickLogout}>Log Out</button>
       <br />
       <button>Toggle Moderator Status</button>
     </div>
