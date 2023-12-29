@@ -1,19 +1,23 @@
 "use client";
 import { useState } from "react";
-import { logIn, logOut } from "../redux/features/auth-slice";
+import { logIn, logOut, toggleModerator } from "../redux/features/auth-slice";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/redux/store";
+import { useAppSelector } from "@/redux/store";
 
 export default function LogIn() {
   const [username, setUsername] = useState("");
 
   const dispatch = useDispatch<AppDispatch>();
+  const isAuth = useAppSelector((state) => state.authReducer.value.isAuth);
 
   const onClickLogIn = () => {
     dispatch(logIn(username));
   };
 
-  const onClickToggle = () => {};
+  const onClickToggle = () => {
+    dispatch(toggleModerator());
+  };
 
   const onClickLogout = () => {
     dispatch(logOut());
@@ -27,38 +31,9 @@ export default function LogIn() {
       <br />
       <button onClick={onClickLogout}>Log Out</button>
       <br />
-      <button>Toggle Moderator Status</button>
+      {isAuth && (
+        <button onClick={onClickToggle}>Toggle Moderator Status</button>
+      )}
     </div>
   );
 }
-
-/* WITHOUT REDUX
-
-"use client"; 
-import { useState } from "react";
-
-
-export default function LogIn() {
-  const [username, setUsername] = useState("");
-
-  const onClickLogIn = () => {};
-
-  const onClickToggle = () => {};
-
-  const onClickLogout = () => {};
-
-  return (
-    <div>
-      <input type="text" onChange={(e) => setUsername(e.target.value)} />
-      <br />
-      <button>Log In</button>
-      <br />
-      <button>Log Out</button>
-      <br />
-      <button>Toggle Moderator Status</button>
-    </div>
-  );
-}
-
-
-*/
