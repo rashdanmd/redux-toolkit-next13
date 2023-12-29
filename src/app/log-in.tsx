@@ -1,7 +1,24 @@
-import React from "react";
+"use client";
+import { useState } from "react";
 
-const Login = () => {
-  return <div>Login</div>;
-};
+export default function LogIn() {
+  const [username, setUsername] = useState("");
 
-export default Login;
+  const onClickLogIn = () => {};
+
+  const onClickToggle = () => {};
+
+  const onClickLogout = () => {};
+
+  return (
+    <div>
+      <input type="text" onChange={(e) => setUsername(e.target.value)} />
+      <br />
+      <button>Log In</button>
+      <br />
+      <button>Log Out</button>
+      <br />
+      <button>Toggle Moderator Status</button>
+    </div>
+  );
+}
